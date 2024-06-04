@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         // Blocking code example (Synchronous)
+
+// // Function simulating a synchronous data fetch
+// function fetchDataSync() {
+//   // Simulate a time-consuming operation, like fetching data from a server
+//   for (let i = 0; i < 5e8; i++) {
+//     // This loop creates a delay to mimic a blocking operation
+//     // In a real-world scenario, this might be a network request, file read, etc.
+//   }
+
+//   return "Data fetched synchronously";
+// }
+
+// // Synchronous execution
+// console.log("Start");
+
+// // Call the synchronous function
+// const result = fetchDataSync();
+
+// // Continue with the rest of the code only after fetchDataSync completes
+// console.log(result);
+
+// console.log("End");
+// Simulating an asynchronous operation with a callback
+// function fetchDataAsync(callback) {
+//   setTimeout(() => {
+//     // Simulating successful data retrieval
+//     const data = "Data fetched asynchronously";
+    
+//     // Invoke the callback with the retrieved data
+//     callback(null, data);
+
+//     // Simulating an error (uncomment to simulate an error)
+//     // callback(new Error("Error fetching data asynchronously"));
+//   }, 2000); // Simulating a delay of 2 seconds
+// }
+
+// console.log("Start");
+
+// // Using the fetchDataAsync function with a callback
+// fetchDataAsync((error, result) => {
+//   // Callback function to handle the asynchronous result or error
+//   if (error) {
+//     // Handle error
+//     console.error(error.message);
+//   } else {
+//     // Handle successful result
+//     console.log(result);
+//   }
+
+//   // Perform additional tasks after the asynchronous operation, if needed
+//   console.log("End");
+// });
+
+
+// function delayedTask(call) {
+//   setTimeout(function () {
+//     console.log("Task completed after 2 seconds");
+//     call(); // Execute the callback function
+//   }, 2000);
+// }
+
+// function handleCompletion() {
+//   console.log("Callback function executed");
+// }
+// const add=()=>{console.log("Callback1 function1 executed");}
+
+// // Using the delayedTask function with a callback
+// delayedTask(handleCompletion);
+// delayedTask(add);
+
+
+/**********callback************/
+
+// const calculate=(a,b,operation)=>{
+//     return operation(a,b);
+// }
+
+// //method1
+// const add=calculate(5,6, function (n1,n2){
+//     return n1+n2;
+// });
+// console.log(add)
+// // Method 2
+// const sub=(a,b)=> {return a-b;}
+// const subresult=calculate(5,11,sub);
+// console.log(subresult);
+
+// // method 3
+// function multi(a,b){
+//     return a*b;
+// }
+// const mr=calculate(4,5,multi)
+// console.log(mr);
+
+// const subresult1=calculate(5,11,(a,b)=>{return a+b;})
+// console.log(subresult1);
+
+// *****************************************************
+
+console.log('Start'); // This will be printed first
+
+// Asynchronous operation using setTimeout
+setTimeout(function() {
+    console.log('Async operation 1 completed after 2 seconds'); // This will be printed after 2 seconds
+}, 2000);
+
+// Another asynchronous operation using setTimeout
+setTimeout(function() {
+    console.log('Async operation 2 completed after 1 second'); // This will be printed after 1 second
+}, 1000);
+
+// Yet another asynchronous operation using setTimeout
+setTimeout(function() {
+    console.log('Async operation 3 completed after 3 seconds'); // This will be printed after 3 seconds
+}, 3000);
+
+console.log('End'); // This will be printed second
+
+//******************************************************
+
+
+// /*********Simulating an asynchronous operation (fetching data from a server)******/
+
+// function fetchData(callback) {
+//   setTimeout(function () {
+//     const data = { id: 1, name: 'John Doe', age: 25 };
+//     // Simulating a successful response
+//     callback(null, data);
+//     // In a real-world scenario, you might handle errors differently
+//   }, 2000);
+// }
+
+// // Callback function to handle the fetched data
+// function handleData(error, data) {
+//   if (error) {
+//     console.error('Error:', error);
+//   } else {
+//     console.log('Fetched data:', data);
+//   }
+// }
+
+// // Using the fetchData function with the handleData callback
+// fetchData(handleData);
+
+// // The rest of the program can continue executing without waiting for fetchData to complete
+// console.log('Program continues executing...');
+
+// Promise is object to reperesent evedntual completion or reject
+const p=new Promise(function(resolve,reject){
+// do an asynch task
+// DB task, cryptography task, network related task
+setTimeout(function(){
+  console.log('task is completed')
+  resolve();
+}, 2000)
+})
+p.then(function(){
+  console.log('promise consumed')
+}
+)
+
+new Promise(function(resolve,reject){
+  setTimeout(function(){
+    console.log('asynch task 2');
+    resolve();
+  }, 2000)
+}).then(function(){
+  console.log('asynch 2 resolved');
+})
+
+// const p3=new Promise(function(resolve,reject){
+//   setTimeout(function(){
+//     resolve({username:"sujit", email:"sujitdascsit@soa.ac.in"})
+//   },2000)
+// })
+// p3.then(function(user){
+// console.log(user);
+// })
+
+const p4=new Promise(function(resolve,reject){
+  setTimeout(function(){
+    let error=true;
+    if(!error){
+      resolve({username:"Dinesh",pwd:"effwe"})
+    }
+      else
+      {
+      reject('Error: somthing is wrong')
+    }
+  },2000)
+})
+p4.then((user)=>{
+  console.log(user);
+  return user.username;
+}).then((username)=>{
+  console.log(username);
+}).catch(function(error){
+  console.log(error);
+})
+
+// Normal synchronous task
+console.log('Synchronous task 1');
+
+// Asynchronous task 1: Simulating fetching data from an API
+const fetchData1 = () => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log('Data 1 fetched');
+            resolve();
+        }, 3000); // Simulating fetching data for 3 seconds
+    });
+};
+
+// Asynchronous task 2: Simulating processing data
+const processData = () => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log('Data processed');
+            resolve();
+        }, 2000); // Simulating processing data for 2 seconds
+    });
+};
+
+// Asynchronous task 3: Simulating fetching more data from another API
+const fetchData2 = () => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            console.log('Data 2 fetched');
+            resolve();
+        }, 4000); // Simulating fetching more data for 4 seconds
+    });
+};
+
+// Normal synchronous task
+console.log('Synchronous task 2');
+
+// Execute asynchronous tasks concurrently
+(async () => {
+    await fetchData1(); // Fetch data 1
+    await processData(); // Process data
+    await fetchData2(); // Fetch data 2
+})();
+
+// Another normal synchronous task
+console.log('Synchronous task 3');
+
+</script>
+</body>
+</html>

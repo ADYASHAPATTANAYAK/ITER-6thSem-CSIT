@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery Animation Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box"></div>
+
+  <script>
+    $(document).ready(function() {
+      // Hide and then show the box with animation
+      function animateBox() {
+      $(".box").hide(1000).show(1000);
+
+      // Change the background color with animation
+      $(".box").animate({
+        backgroundColor: "red"
+      }, 1000);
+    }
+    setInterval(animateBox, 2000);
+
+// Initial call to start the animation
+animateBox();
+    });
+    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function register(callback)
+        {
+            
+            setTimeout(()=>{console.log("register end");
+                             callback(); 
+                      },2000)
+        }
+        function sendEmail(callback)
+        {
+            setTimeout(()=>{console.log("mail sent");
+            callback();},1000)
+       
+          
+        }
+        function login(callback)
+        {
+            setTimeout(()=>{console.log("login end");
+            callback();},1000)
+            
+           
+        }
+        function getuserdata(callback)
+        {
+            setTimeout(()=>{console.log("got user data");
+            callback();},1000)
+            
+          
+        }
+        function displayuserdata(callback)
+        {
+            setTimeout(()=>{console.log("user data displayed");
+            callback();},1000)
+       
+        }
+            
+        register(function(){
+            sendEmail(function(){
+                    login(function(){
+                        getuserdata(function(){
+                            displayuserdata();
+                        });
+                     });
+               });
+          });
+        
+        console.log("other application work");
+    </script>
+</body>
+</html>

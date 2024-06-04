@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea facere, debitis quos repellendus nam pariatur assumenda saepe vitae, incidunt, suscipit consequatur vero! Inventore, veniam. Blanditiis, fugiat itaque? Autem dignissimos commodi officiis eos ea numquam dolor rem quod, fugiat delectus voluptatem doloribus temporibus odit cupiditate impedit non voluptatum alias eaque? Magnam.</p>
+    <button onclick="convert()">click to see the change</button>
+    <script>
+        function convert(){
+        const paragraph=document.querySelector('p');
+        paragraph.innerHTML=paragraph.innerText.split(' ').map(word=>word.length>8 ?`<span style ="background-color :yellow">${word}</span>`:word).join(' ');
+        }
+    </script>
+</body>
+</html>

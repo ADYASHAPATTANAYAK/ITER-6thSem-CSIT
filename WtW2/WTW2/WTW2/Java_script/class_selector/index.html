@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Selector Handling</title>
+  <style>
+    .highlight {
+      color: red;
+      font-weight: bold;
+    }
+    .toggleable {
+      cursor: pointer;
+    }
+   
+  </style>
+</head>
+<body>
+
+  <p class="highlight">This is highlighted text.</p>
+  <p class="highlight">So is this.</p>
+  <p class="highlight"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam vel, blanditiis, dolor corrupti impedit quisquam nisi neque culpa aliquid nemo voluptas veritatis perspiciatis nobis recusandae repudiandae velit. Deserunt, corrupti enim?</p>
+  <p>This is regular text.</p>
+  <p class="highlight"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dolore nulla ab, eaque fuga, tempora nihil placeat quia repudiandae molestias voluptatem labore recusandae aut. Necessitatibus libero recusandae voluptatem eos perferendis!</p>
+
+  <p class="toggleable">Click to toggle class</p>
+  <p class="highlight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero totam et atque aliquid vero provident suscipit amet placeat distinctio recusandae blanditiis, perspiciatis officiis doloremque eveniet magnam optio velit esse minima?</p>
+
+  <script>
+    // Select all elements with the class "highlight" and store them in an array
+    const highlightedElements = document.querySelectorAll('.highlight');
+    let hlelm=document.getElementsByClassName("highlight");
+
+    // Loop through the array and add an event listener to each element
+    highlightedElements.forEach(element => {
+      element.addEventListener('click', () => {
+        alert('Element clicked!');
+      });
+    });
+
+    function changecolor1(){
+        hlelm[1].style.color="blue";
+    }
+    function gotosamecolor(){
+        hlelm[1].style.color="red";
+    }
+    hlelm[1].addEventListener('mouseover', changecolor1);
+    hlelm[1].addEventListener('mouseout', gotosamecolor);
+
+  // Select the element with the class "toggleable"
+  const toggleableElement = document.querySelector('.toggleable');
+
+// Add a click event listener to toggle the class "highlight"
+toggleableElement.addEventListener('click', () => {
+  toggleableElement.classList.toggle('highlight');
+});
+
+  </script>
+
+</body>
+</html>

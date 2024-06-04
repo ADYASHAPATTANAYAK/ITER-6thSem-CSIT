@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('images/background.jpg'); /* Add your background image here */
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar {
+    width: 97.5%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #66fcf1;
+}
+
+.slider {
+    position: relative;
+    width: 60%; /* Made the slider smaller */
+    max-width: 800px;
+    margin-top: 100px; /* Added margin to avoid overlap with the navbar */
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    border-radius: 15px;
+    display: block;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slide:hover img {
+    transform: scale(1.05);
+}
+
+.navigation {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.navigation button {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: #1b1b1b;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.navigation button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.navigation button:focus {
+    outline: none;
+}
